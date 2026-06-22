@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯信息索引 · 站点介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #faf9f8;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.7;
+      color: #1c1c1c;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .page {
+      max-width: 760px;
+      width: 100%;
+    }
+
+    /* 头部 / 站点标识 */
+    .site-label {
+      border-bottom: 2px solid #d4d0cb;
+      padding-bottom: 0.6rem;
+      margin-bottom: 2.8rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .site-label h1 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      background: #f0ede9;
+      display: inline-block;
+      padding: 0.2rem 1rem 0.2rem 0.2rem;
+      border-radius: 0 3px 3px 0;
+    }
+    .site-label .tag {
+      font-size: 0.85rem;
+      color: #706c68;
+      background: #eae7e2;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+    }
+
+    /* 主介绍区 —— 目录感卡片 */
+    .intro-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2rem 2rem 2.2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 20px rgba(0,0,0,0.02);
+      margin-bottom: 2.2rem;
+      border: 1px solid #eae7e2;
+    }
+    .intro-card .emoji-rule {
+      font-size: 1.2rem;
+      margin-bottom: 0.9rem;
+      background: #f3f0ec;
+      display: inline-block;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+    }
+    .intro-card p {
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      color: #2d2a27;
+    }
+    .intro-card p:last-child {
+      margin-bottom: 0;
+    }
+    .inline-link {
+      color: #1a5e8c;
+      text-decoration: none;
+      border-bottom: 1px solid #b3cfeb;
+      transition: border-color 0.2s;
+    }
+    .inline-link:hover {
+      border-bottom-color: #1a5e8c;
+    }
+
+    /* 说明区 + 提示区 —— 双列布局，窄屏自适应 */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.8rem;
+    }
+    @media (max-width: 540px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+    }
+    .info-block {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.6rem 1.5rem 1.8rem;
+      border: 1px solid #eae7e2;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .info-block h3 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid #dbd6d0;
+      display: inline-block;
+    }
+    .info-block p, .info-block li {
+      font-size: 0.95rem;
+      color: #3b3835;
+    }
+    .info-block ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .info-block li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .info-block li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #9e958e;
+    }
+    .info-block .highlight-note {
+      background: #f7f4f0;
+      border-left: 3px solid #bfb6ae;
+      padding: 0.4rem 0.8rem;
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    /* 相关信息区 —— 类似 FAQ 摘要 / 索引模块 */
+    .reference-area {
+      margin-bottom: 2.8rem;
+    }
+    .reference-area h2 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #3f3b36;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+    }
+    .reference-area h2 span {
+      background: #e4dfd9;
+      display: inline-block;
+      padding: 0 0.6rem;
+      margin-left: 0.6rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      color: #534e48;
+    }
+    .ref-item {
+      background: #ffffff;
+      border: 1px solid #e6e2dc;
+      border-radius: 10px;
+      padding: 1rem 1.4rem;
+      margin-bottom: 0.8rem;
+      transition: box-shadow 0.15s;
+    }
+    .ref-item:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .ref-item .q {
+      font-weight: 500;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+      color: #1f1c18;
+    }
+    .ref-item .a {
+      font-size: 0.9rem;
+      color: #5d5852;
+      line-height: 1.5;
+    }
+    .ref-item .a a {
+      color: #1a5e8c;
+      text-decoration: none;
+      border-bottom: 1px solid #c8dae9;
+    }
+    .ref-item .a a:hover {
+      border-bottom-color: #1a5e8c;
+    }
+
+    /* 底部 */
+    .footer-note {
+      font-size: 0.8rem;
+      color: #8b8580;
+      border-top: 1px solid #dbd6d0;
+      padding-top: 1.5rem;
+      margin-top: 0.5rem;
+      text-align: center;
+      letter-spacing: 0.2px;
+    }
+    .footer-note a {
+      color: #6b6560;
+      text-decoration: none;
+      border-bottom: 1px dotted #b4aea8;
+    }
+    .footer-note a:hover {
+      color: #2d2a27;
+    }
+
+    /* 辅助微调 */
+    .small-print {
+      font-size: 0.85rem;
+      color: #7a7570;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 站点标识 / 目录标题 -->
+    <div class="site-label">
+      <h1>📋 世界杯索引</h1>
+      <span class="tag">知识库 · 入口</span>
+    </div>
+
+    <!-- 介绍卡片：站点说明 + 可信背景 -->
+    <div class="intro-card">
+      <div class="emoji-rule">⚽ 关于这个站点</div>
+      <p><strong>cnwebs-official-worldcup.com</strong> 是一个围绕<span style="font-weight:500;">世界杯</span>相关内容整理的信息索引点。它并非官方赛事组织方，而是一处由爱好者与信息整理者维护的微型知识库，帮助对赛事感兴趣的人更快找到可靠线索与周边资源。</p>
+      <p>站内内容以目录和指南为主，不直接提供直播、比分或博彩入口，也不做任何形式的预测或承诺。如果你正在寻找集中于<a href="https://cnwebs-official-worldcup.com" class="inline-link">世界杯</a>的体系化资料、历史背景或观赛常识，这里也许能成为一个踏实的起点。</p>
+      <p style="color:#5c5650; font-size:0.92rem; background:#f6f3ef; padding:0.5rem 0.9rem; border-radius:8px;">📌 站点本身保持静态更新，所有外链均经过基本核实，但建议你交叉比对重要信息。</p>
+    </div>
+
+    <!-- 说明区 + 提示区：双卡片 -->
+    <div class="info-grid">
+      <div class="info-block">
+        <h3>🧩 说明区</h3>
+        <ul>
+          <li>本站并非国际足联或任何主办国官方平台。</li>
+          <li>内容方向：赛事沿革、参赛队简史、经典对阵、举办地介绍。</li>
+          <li>文字以中文编译与整理为主，引用均标注来源年份。</li>
+          <li>站内不嵌入第三方跟踪脚本，仅使用基本分析计数（匿名）。</li>
+        </ul>
+        <div class="highlight-note">🔎 如果你希望系统性地回顾历届世界杯，本站的“年代索引”模块会很有帮助。</div>
+      </div>
+      <div class="info-block">
+        <h3>💡 提示区</h3>
+        <ul>
+          <li>部分早期赛事数据存在多个版本，本站取用公认度较高的记录。</li>
+          <li>链接到外部百科或新闻网站时，请注意其各自更新日期。</li>
+          <li>赛程类信息请以当届主办方官方发布为准。</li>
+          <li>遇到站内死链或错误，欢迎通过 GitHub issues 反馈。</li>
+        </ul>
+        <div class="highlight-note">📅 新一届赛事筹备期间，索引会逐步补充预选赛与主办城市概要。</div>
+      </div>
+    </div>
+
+    <!-- 相关信息区 —— FAQ 摘要 / 索引条目 -->
+    <div class="reference-area">
+      <h2>📎 相关信息 <span>常见索引</span></h2>
+
+      <div class="ref-item">
+        <div class="q">🏆 世界杯历史冠军一览</div>
+        <div class="a">从1930年至今共举办22届，巴西5次夺冠，德国、意大利各4次……完整列表可在站内「冠军名录」找到。</div>
+      </div>
+
+      <div class="ref-item">
+        <div class="q">🌍 历届主办国分布</div>
+        <div class="a">欧洲11次，美洲8次，亚洲2次，非洲1次。2030年将由西班牙、葡萄牙、摩洛哥联合主办。</div>
+      </div>
+
+      <div class="ref-item">
+        <div class="q">📖 世界杯经典比赛档案</div>
+        <div class="a">收录包括1970年决赛、1986年英阿之战、2014年半决赛等二十场经典战。每场附简明战术回顾。</div>
+      </div>
+
+      <div class="ref-item">
+        <div class="q">🔗 如何正确使用本站链接</div>
+        <div class="a">页面中所有指向 <a href="https://cnwebs-official-worldcup.com">世界杯</a> 的链接均回到首页索引。内部目录通过锚点跳转，无需额外权限。</div>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+      <span>cnwebs-official-worldcup.com · 非官方信息索引</span><br>
+      <span style="display:inline-block; margin-top:0.4rem;">内容持续修订 · 保留所有权利 · 2025</span>
+    </div>
+  </div>
+</body>
+</html>
